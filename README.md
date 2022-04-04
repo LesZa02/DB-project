@@ -1,71 +1,85 @@
 # Data Base project
 ## Тема: сервис для бронирования отелей.
+Цели работы: получение практических навыков работы с промышленными СУБД, проектирование
+БД (концептуальное, логическое, физическое), создание хранимых процедур, представлений,
+триггеров, индексов.
 
-Смоделируем сервис для бронирования отелей, взяв за основу такой сайт, как booking. 
+За предметную область выберем сервис для бронирования отелей. За основу возбмем такой сайт, как booking. 
+
 Выделим следующие сущности:
+
 1 - Бронирования (информация о госте, отеле, бронировании)
+
 2 - Отели (общая информация об отелях, которая показывается при поиске)
+
 3 - Гости (информация о госте, его контакты, история бронирований)
+
 4 - Закладки (сохраненные пользователей отели)
+
 5 - Отзывы (на отель от гостей)
+
 6 - Комнаты отелей
+
 7 - Категории отелей
 
+Определим взаимосвязи между сущностями и отбразим их на следующей можели:
 ## Концепуальная модель
 ![image](https://user-images.githubusercontent.com/70393328/161622169-f236e386-551a-4900-9f9a-7b922e96687e.png)
 
+Деталезируем сущности, определим атрибуты:
 ## Логическая модель
 ![log](https://user-images.githubusercontent.com/70393328/161622050-f5c30506-53ea-4ece-8af5-8b7916bf8980.png)
 
+Определим, какие данные будем хранить и какие будут ограничения:
  ## Физическая модель
  
  #### Booking
 | Field name | Description | Data type | Restrictions |
 |---|---|---|---| 
 | booking_id | booking's id | SERIAL | PRIMARY KEY |
-| guest_id |  guest's id | SERIAL | PRIMARY KEY |
-| room_id | room's id | SERIAL | PRIMARY KEY |
+| guest_id |  guest's id | SERIAL | FOREIGN KEY |
+| room_id | room's id | SERIAL | FOREIGN KEY |
 | number_of_nights | number of nights | INTEGER | NOT NULL |
 
 #### Hotels
 | Field name | Description | Data type | Restrictions |
 |---|---|---|---| 
-| hotel_id | booking's id | SERIAL | PRIMARY KEY |
-| name |  hotel name | SERIAL | PRIMARY KEY |
-| email | email | SERIAL | PRIMARY KEY |
-| city | city name | INTEGER | NOT NULL |
-| website | website | SERIAL | PRIMARY KEY |
-| phone | phone number | INTEGER | NOT NULL |
-| category_id | category's id | SERIAL | PRIMARY KEY |
+| hotel_id | hotels's id | SERIAL | PRIMARY KEY |
+| name |  hotel name | VARCHAR(20) | NOT NULL |
+| email | hotel email adress | VARCHAR(40) | UNIQUE |
+| city | city name |  VARCHAR(20) |  |
+| website | website | VARCHAR(40) | UNIQUE |
+| phone | phone number | INTEGER | UNIQUE |
+| category_id | category's id | SERIAL | FOREIGN KEY |
 
 #### Guests
 | Field name | Description | Data type | Restrictions |
 |---|---|---|---| 
-| guest_id | booking`s id | SERIAL | PRIMARY KEY |
-| first_name |  guest`s id | SERIAL | PRIMARY KEY |
-| last_name | room`s id | SERIAL | PRIMARY KEY |
-| email | number of nigths | INTEGER | NOT NULL |
+| guest_id | guest`s id | SERIAL | PRIMARY KEY |
+| first_name |  guest`s first name | VARCHAR(20) | NOT NULL |
+| last_name | guest`s last name | VARCHAR(20) | NOT NULL |
+| email | guest's email adress | VARCHAR(40) | UNIQUE |
 
 #### Bookmarks
 | Field name | Description | Data type | Restrictions |
 |---|---|---|---| 
-| guest_id | booking`s id | SERIAL | PRIMARY KEY |
-| hotel_id |  guest`s id | SERIAL | PRIMARY KEY |
+| guest_id | guest`s id | SERIAL | FOREIGN KEY |
+| hotel_id |  hotel`s id | SERIAL | FOREIGN KEY |
 
 #### Reviews
 | Field name | Description | Data type | Restrictions |
 |---|---|---|---| 
-| guest_id | booking`s id | SERIAL | PRIMARY KEY |
-| hotel_id |  guest`s id | SERIAL | PRIMARY KEY |
+| guest_id | guest`s id | SERIAL | FOREIGN KEY |
+| hotel_id |  hotel`s id | SERIAL | FOREIGN KEY |
 
 #### Rooms
 | Field name | Description | Data type | Restrictions |
 |---|---|---|---| 
-| hotel_id | booking`s id | SERIAL | PRIMARY KEY |
-| bed_number |  guest`s id | SERIAL | PRIMARY KEY |
-| description |  guest`s id | SERIAL | PRIMARY KEY |
+| hotel_id | hotel`s id | SERIAL | FOREIGN KEY |
+| bed_number |  number of bed in room | INTEGER |  |
+| description |  guest`s id | VARCHAR(400) |  |
 
 #### Category
 | Field name | Description | Data type | Restrictions |
 |---|---|---|---| 
-| category_id | booking`s id | SERIAL | PRIMARY KEY |
+| category_id | category`s id | SERIAL | PRIMARY KEY |
