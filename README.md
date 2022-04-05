@@ -87,3 +87,5 @@
 | Field name | Description | Data type | Restrictions |
 |---|---|---|---| 
 | category_id | category`s id | SERIAL | PRIMARY KEY |
+
+Хранить историю изменений объявлений и данных пользователя нет необходимости, поэтому достаточно использовать SCD2.
