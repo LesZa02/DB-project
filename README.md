@@ -30,7 +30,7 @@
 
 Деталезируем сущности, определим атрибуты:
 ## Логическая модель
-![log](https://user-images.githubusercontent.com/70393328/161622050-f5c30506-53ea-4ece-8af5-8b7916bf8980.png)
+![image](https://user-images.githubusercontent.com/70393328/161745240-80565f10-5a97-42dc-88e2-3360cd42e9ad.png)
 
 Определим, какие данные будем хранить и какие будут ограничения:
  ## Физическая модель
@@ -41,7 +41,8 @@
 | booking_id | booking's id | SERIAL | PRIMARY KEY |
 | guest_id |  guest's id | SERIAL | FOREIGN KEY |
 | room_id | room's id | SERIAL | FOREIGN KEY |
-| number_of_nights | number of nights | INTEGER | NOT NULL |
+| check_in | check-in data | DATE | NOT NULL |
+| check_out | check-out data | DATE | NOT NULL |
 
 #### Hotels
 | Field name | Description | Data type | Restrictions |
@@ -73,6 +74,7 @@
 |---|---|---|---| 
 | guest_id | guest`s id | SERIAL | FOREIGN KEY |
 | hotel_id |  hotel`s id | SERIAL | FOREIGN KEY |
+| review_content | content of review | VARCHAR(400) | |
 
 #### Rooms
 | Field name | Description | Data type | Restrictions |
