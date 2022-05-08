@@ -33,14 +33,6 @@
 Определим, какие данные будем хранить и какие будут ограничения:
  ## Физическая модель
  
- #### Booking
-| Field name | Description | Data type | Restrictions |
-|---|---|---|---| 
-| booking_id | booking's id | SERIAL | PRIMARY KEY |
-| guest_id |  guest's id | SERIAL | FOREIGN KEY |
-| room_id | room's id | SERIAL | FOREIGN KEY |
-| number_of_nights | number of nights | INTEGER | NOT NULL |
-
 #### Hotels
 | Field name | Description | Data type | Restrictions |
 |---|---|---|---| 
@@ -50,7 +42,18 @@
 | city | city name |  VARCHAR(20) |  |
 | website | website | VARCHAR(40) | UNIQUE |
 | phone | phone number | INTEGER | UNIQUE |
+| hotel_chain_id | hotel's chain id | SERIAL | FOREIGN KEY |
 | category_id | category's id | SERIAL | FOREIGN KEY |
+
+#### Bookings
+| Field name | Description | Data type | Restrictions |
+|---|---|---|---| 
+| booking_id | booking's id | SERIAL | PRIMARY KEY |
+| guest_id |  guest's id | SERIAL | FOREIGN KEY |
+| guest_number | number of guest | INTEGER | NOT NULL |
+| room_id | room's id | SERIAL | FOREIGN KEY |
+| check_in | check in date | DATE | NOT NULL |
+| check_out | check out date | DATE | NOT NULL |
 
 #### Guests
 | Field name | Description | Data type | Restrictions |
@@ -60,26 +63,39 @@
 | last_name | guest`s last name | VARCHAR(20) | NOT NULL |
 | email | guest's email adress | VARCHAR(40) | UNIQUE |
 
+#### Rooms
+| Field name | Description | Data type | Restrictions |
+|---|---|---|---| 
+| room_id | room`s id | SERIAL | PRIMARY KEY |
+| hotel_id | hotel`s id | SERIAL | FOREIGN KEY |
+| bed_number |  number of bed in room | INTEGER |  |
+| description |  description | VARCHAR(400) |  |
+
 #### Bookmarks
 | Field name | Description | Data type | Restrictions |
 |---|---|---|---| 
+| bookmark_id | bookmark`s id | SERIAL | PRIMARY KEY |
 | guest_id | guest`s id | SERIAL | FOREIGN KEY |
 | hotel_id |  hotel`s id | SERIAL | FOREIGN KEY |
 
 #### Reviews
 | Field name | Description | Data type | Restrictions |
 |---|---|---|---| 
+| review_id | review`s id | SERIAL | PRIMARY KEY |
 | guest_id | guest`s id | SERIAL | FOREIGN KEY |
-| hotel_id |  hotel`s id | SERIAL | FOREIGN KEY |
-
-#### Rooms
-| Field name | Description | Data type | Restrictions |
-|---|---|---|---| 
-| hotel_id | hotel`s id | SERIAL | FOREIGN KEY |
-| bed_number |  number of bed in room | INTEGER |  |
-| description |  guest`s id | VARCHAR(400) |  |
+| booking_id |  booking`s id | SERIAL | FOREIGN KEY |
+| review_content |  review content | VARCHAR(400) |  |
 
 #### Category
 | Field name | Description | Data type | Restrictions |
 |---|---|---|---| 
 | category_id | category`s id | SERIAL | PRIMARY KEY |
+| discription |  description | VARCHAR(400) |  |
+
+#### Hotel's chain
+| Field name | Description | Data type | Restrictions |
+|---|---|---|---| 
+| hotel_chain_id | category`s id | SERIAL | PRIMARY KEY |
+| discription |  description | VARCHAR(400) |  |
+| email | chain's email adress | VARCHAR(40) | UNIQUE |
+
