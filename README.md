@@ -14,7 +14,7 @@
 
 3 - Гости (информация о госте, его контакты, история бронирований)
 
-6 - Комнаты отелей
+6 - Тип размещения
 
 Определим взаимосвязи между сущностями и отбразим их на следующей можели:
 ## Концепуальная модель
@@ -44,7 +44,7 @@
 | booking_id | booking's id | SERIAL | PRIMARY KEY |
 | guest_id |  guest's id | SERIAL | FOREIGN KEY |
 | guest_number | number of guest | INTEGER | NOT NULL |
-| room_id | room's id | SERIAL | FOREIGN KEY |
+| placement_id | placement's id | SERIAL | FOREIGN KEY |
 | check_in | check in date | DATE | NOT NULL |
 | check_out | check out date | DATE | NOT NULL |
 
@@ -56,12 +56,12 @@
 | last_name | guest`s last name | VARCHAR(20) | NOT NULL |
 | email | guest's email adress | VARCHAR(40) | UNIQUE |
 
-#### Rooms
+#### Placements
 | Field name | Description | Data type | Restrictions |
 |---|---|---|---| 
-| room_id | room`s id | SERIAL | PRIMARY KEY |
+| placement_id | placement`s id | SERIAL | PRIMARY KEY |
 | hotel_id | hotel`s id | SERIAL | FOREIGN KEY |
-| bed_number |  number of bed in room | INTEGER |  |
+| capacity |  number of beds | INTEGER |  |
 | description |  description | VARCHAR(400) |  |
 
 #### Bookmarks
