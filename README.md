@@ -18,11 +18,11 @@
 
 Определим взаимосвязи между сущностями и отбразим их на следующей можели:
 ## Концепуальная модель
-![bd1](https://user-images.githubusercontent.com/70393328/167842043-a9649186-f127-497d-a7aa-e80bc7b70c92.png)
+![bd1](https://user-images.githubusercontent.com/70393328/167959727-537c1035-1364-4f94-86a0-b41f52e3a3ae.png)
 
 Деталезируем сущности, определим атрибуты:
 ## Логическая модель
-![log](https://user-images.githubusercontent.com/70393328/161622050-f5c30506-53ea-4ece-8af5-8b7916bf8980.png)
+![bd2](https://user-images.githubusercontent.com/70393328/167959735-13d313ae-13d7-46e6-b9ff-51a1bb283ca3.png)
 
 Определим, какие данные будем хранить и какие будут ограничения:
  ## Физическая модель
