@@ -14,17 +14,11 @@
 
 3 - Гости (информация о госте, его контакты, история бронирований)
 
-4 - Закладки (сохраненные пользователей отели)
-
-5 - Отзывы (на отель от гостей)
-
 6 - Комнаты отелей
-
-7 - Категории отелей
 
 Определим взаимосвязи между сущностями и отбразим их на следующей можели:
 ## Концепуальная модель
-![image](https://user-images.githubusercontent.com/70393328/161622169-f236e386-551a-4900-9f9a-7b922e96687e.png)
+![bd1](https://user-images.githubusercontent.com/70393328/167842043-a9649186-f127-497d-a7aa-e80bc7b70c92.png)
 
 Деталезируем сущности, определим атрибуты:
 ## Логическая модель
@@ -37,12 +31,11 @@
 | Field name | Description | Data type | Restrictions |
 |---|---|---|---| 
 | hotel_id | hotels's id | SERIAL | PRIMARY KEY |
-| name |  hotel name | VARCHAR(20) | NOT NULL |
-| email | hotel email adress | VARCHAR(40) | UNIQUE |
+| name |  hotel name | VARCHAR(60) | NOT NULL |
 | city | city name |  VARCHAR(20) |  |
-| website | website | VARCHAR(40) | UNIQUE |
-| phone | phone number | INTEGER | UNIQUE |
-| hotel_chain_id | hotel's chain id | SERIAL | FOREIGN KEY |
+| email | hotel email adress | VARCHAR(40) | UNIQUE |
+| phone | phone number | VARCHAR(40) | UNIQUE |
+| hotel_company_id | hotel's company id | SERIAL | FOREIGN KEY |
 | category_id | category's id | SERIAL | FOREIGN KEY |
 
 #### Bookings
@@ -84,18 +77,20 @@
 | review_id | review`s id | SERIAL | PRIMARY KEY |
 | guest_id | guest`s id | SERIAL | FOREIGN KEY |
 | booking_id |  booking`s id | SERIAL | FOREIGN KEY |
+| rating |  rating | INTEGER | NOT NULL |
 | review_content |  review content | VARCHAR(400) |  |
 
 #### Category
 | Field name | Description | Data type | Restrictions |
 |---|---|---|---| 
 | category_id | category`s id | SERIAL | PRIMARY KEY |
+| name |  category name | VARCHAR(20) | NOT NULL |
 | discription |  description | VARCHAR(400) |  |
 
-#### Hotel's chain
+#### Company
 | Field name | Description | Data type | Restrictions |
 |---|---|---|---| 
 | hotel_chain_id | category`s id | SERIAL | PRIMARY KEY |
-| discription |  description | VARCHAR(400) |  |
-| email | chain's email adress | VARCHAR(40) | UNIQUE |
+| name |  company name | VARCHAR(20) | NOT NULL |
+| website	| website | VARCHAR(40)	| UNIQUE |
 
